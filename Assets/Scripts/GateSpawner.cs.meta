@@ -3,7 +3,9 @@ guid: 70cb71c61f8448e4cb645d5ad13bb3ae
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - duplicationGatePrefab: {fileID: 7476363595218283731, guid: e7ee181fbe98881478271bc7812cebdd, type: 3}
+  - upgradeGatePrefab: {fileID: 3522246814565552446, guid: 63b378e8a4bb97341a25103f6b3ff436, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

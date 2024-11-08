@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; private set; }
+    
     public float moveSpeed = 5f; // Speed of movement
     public float laneDistance = 3f; // Distance between lanes
     public GameObject bulletPrefab; // Bullet prefab to be assigned in the inspector
@@ -15,6 +17,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 startTouchPosition, endTouchPosition; // For swipe detection
     private bool swipeDetected;
     private float nextFireTime = 0f; // Time until the next shot
+
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        } else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -101,4 +115,12 @@ public class PlayerController : MonoBehaviour
             nextFireTime = Time.time + fireRate;
         }
     }
+
+    public void ModifyFireRate(float newFireRate)
+    {
+        fireRate = newFireRate;
+        Debug.Log($"Fire rate updated to: {fireRate}");
+    }
+
+
 }
