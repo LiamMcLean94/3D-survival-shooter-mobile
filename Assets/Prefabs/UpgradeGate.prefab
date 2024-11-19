@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6065210445910705339}
   m_Layer: 0
   m_Name: UpgradeGate
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,6 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gateType: 1
-  requiredShots: 3
-  currentShots: 0
   moveSpeed: 3
+  maxHealth: 3

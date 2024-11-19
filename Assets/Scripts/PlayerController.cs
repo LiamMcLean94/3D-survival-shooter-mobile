@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Transform bulletSpawnPoint; // The point where bullets will spawn
     public float bulletSpeed = 10f; // Speed of the bullet
     public float fireRate = 0.5f; // Time interval between shots
+    public int playerHealth = 100;
 
     private int targetLane = -1; // Start with left lane (-1 = left, 1 = right)
     private Vector2 startTouchPosition, endTouchPosition; // For swipe detection
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
         } else
         {
             Destroy(gameObject);
+            return;
         }
     }
 
@@ -113,6 +115,19 @@ public class PlayerController : MonoBehaviour
 
             // Set the time for the next shot
             nextFireTime = Time.time + fireRate;
+
+            Bullet bulletScript = bullet.AddComponent<Bullet>();
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        playerHealth -= damage;
+        Debug.Log("Player Health: " + playerHealth);
+
+        if(playerHealth <= 0)
+        {
+            Debug.Log("Player is Dead!");
         }
     }
 
@@ -122,5 +137,19 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Fire rate updated to: {fireRate}");
     }
 
+    public class Bullet: MonoBehaviour
+    {
+        private void Start()
+        {
+            Destroy(gameObject, 4f);
+        }
+        private void OnCollisionEnter(Collision other)
+        {
+            if(other.gameObject.CompareTag("Gate") || other.gameObject.CompareTag("Enemy"))
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
 }

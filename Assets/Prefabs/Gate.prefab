@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1415127467163485707}
   m_Layer: 0
   m_Name: Gate
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,9 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gateType: 0
-  requiredShots: 3
-  currentShots: 0
   moveSpeed: 3
+  maxHealth: 3
 --- !u!114 &-1415127467163485707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +163,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gateType: 0
-  requiredShots: 3
-  currentShots: 0
   moveSpeed: 3
+  maxHealth: 3

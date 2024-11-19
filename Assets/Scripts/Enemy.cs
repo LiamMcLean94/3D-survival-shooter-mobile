@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public int health = 2;
+    public int damageAmount = 10;
 
     // Update is called once per frame
     void Update()
@@ -28,6 +29,17 @@ public class Enemy : MonoBehaviour
         {
             TakeDamage(1);
             Destroy(gameObject);
+        }
+
+        if(other.gameObject.CompareTag("Player"))
+        {
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            if(player != null)
+            {
+                player.TakeDamage(damageAmount);
+            }
+
+            Destroy(gameObject); //this destroys enemy on collision with player
         }
     }
 
