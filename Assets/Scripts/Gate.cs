@@ -51,10 +51,29 @@ public class Gate : MonoBehaviour
     {
         if (PlayerController.Instance != null)
         {
-            GameObject player = PlayerController.Instance.gameObject;
+            /*GameObject player = PlayerController.Instance.gameObject;
             Vector3 spawnPosition = player.transform.position + new Vector3(1.11f, 0, 0); // Offset to avoid overlap
             GameObject newPlayer = Instantiate(player, spawnPosition, player.transform.rotation);
-            Debug.Log($"Player duplicated at position: {spawnPosition}");
+            Debug.Log($"Player duplicated at position: {spawnPosition}");*/
+
+            //rebuild so that it is just turning on another player as a child component
+
+            PlayerController playerController = PlayerController.Instance;
+
+            if (!playerController.duplicateActive && playerController.duplicateDestroyed)
+            {
+                playerController.ReactivateDuplicateFromGate();
+            }
+            else if (!playerController.duplicateActive)
+            {
+                playerController.duplicatePlayer.SetActive(true);
+                playerController.duplicateActive = true;
+                Debug.Log("Duplicate player activated.");
+            }
+            else
+            {
+                Debug.LogWarning("Duplicate player already active.");
+            }
         }
         else
         {
